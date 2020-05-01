@@ -18,7 +18,7 @@ public class UserCreation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_creation);
 
-        final EditText userId = findViewById(R.id.userId);
+        //final EditText userId = findViewById(R.id.userId);
         final EditText userName = findViewById(R.id.userName);
         final EditText userGold = findViewById(R.id.userGold);
         Button saveUser = findViewById(R.id.saveUser);
@@ -26,8 +26,6 @@ public class UserCreation extends AppCompatActivity {
         saveUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String goldString= userGold.getText().toString();
-                //int goldInt=Integer.parseInt(goldString);
 
                 //Get a Realm instance for this thread
                 Realm realm = Realm.getDefaultInstance();
@@ -43,9 +41,10 @@ public class UserCreation extends AppCompatActivity {
                 newUser.setUserName(userName.getText().toString());
                 newUser.setGold(Integer.parseInt(userGold.getText().toString()));
 
+                //Push to the database
                 realm.insertOrUpdate(newUser);
                 realm.commitTransaction();
-
+                //Start UserActitty to see new user
                 Intent intent = new Intent(view.getContext(), UserActivity.class);
                 startActivity(intent);
             }

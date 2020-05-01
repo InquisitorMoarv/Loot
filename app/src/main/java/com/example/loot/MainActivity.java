@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +17,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Realm realm = Realm.getDefaultInstance(); // opens "myrealm.realm"
+        RealmConfiguration config = new RealmConfiguration
+                .Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+
+        Realm realm = Realm.getInstance(config); // opens "myrealm.realm"
         try {
             // ... Do something ...
         } finally {

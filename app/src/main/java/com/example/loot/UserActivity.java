@@ -29,18 +29,19 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        //ReclycerView Code
-
+        //RecyclerView Code
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView.setAdapter(new MyAdapter(new Database().getCities()));
         Realm realm = Realm.getDefaultInstance();
 
-        RealmResults<User> realmResults = realm.where(User.class).findAll();
 
+        RealmResults<User> realmResults = realm.where(User.class).findAll();
+        //Convert RealmResultObject to ArrayList<>
         List<User> convertusers = new ArrayList<>(); ;
         convertusers.addAll(realmResults);
 
+        //Give all User to Adapter
         recyclerView.setAdapter(new MyAdapter(convertusers));
 
         FloatingActionButton addButton = findViewById(R.id.fab);
@@ -83,6 +84,8 @@ public class UserActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             holder.name.setText(users.get(position).getUserName());
+            holder.gold.setText(Integer.toString(users.get(position).getGold()));
+            holder.userId.setText(Long.toString(users.get(position).getUserId()));
            // holder.itemView.setTag(position);
            // holder.itemView.setOnClickListener(onClickListener);
         }
@@ -95,10 +98,15 @@ public class UserActivity extends AppCompatActivity {
         class MyViewHolder extends  RecyclerView.ViewHolder{
 
             private TextView name;
+            private TextView gold;
+            private TextView userId;
+
 
             public MyViewHolder(@NonNull View itemView) {
                 super(itemView);
-                name = itemView.findViewById(R.id.name);
+                name = itemView.findViewById(R.id.listName);
+                gold = itemView.findViewById(R.id.listGold);
+                userId = itemView.findViewById(R.id.listId);
             }
         }
 

@@ -10,15 +10,52 @@
     >
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/listId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="32dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/listName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="User Name"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/listId"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="32dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/listGold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1000"
+        app:layout_constraintLeft_toRightOf="@id/listName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="16dp"
         android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gold"
+        app:layout_constraintLeft_toRightOf="@id/listGold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16dp"
+        android:layout_marginStart="8dp"
+        android:textStyle="bold"
         />
 
 
